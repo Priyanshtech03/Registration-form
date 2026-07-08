@@ -1,29 +1,33 @@
-// ================================
-// Get Elements
-// ================================
+// ==============================
+// Registration Form Script
+// ==============================
 
 const form = document.getElementById("registerForm");
 
+const fullname = document.getElementById("fullname");
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const phone = document.getElementById("phone");
 const password = document.getElementById("password");
+
 const togglePassword = document.getElementById("togglePassword");
 const strengthBar = document.getElementById("strengthBar");
-
-const username = document.getElementById("username");
-const userMessage = document.getElementById("userMessage");
 
 const profileImage = document.getElementById("profileImage");
 const preview = document.getElementById("preview");
 
+const userMessage = document.getElementById("userMessage");
+
 const loader = document.getElementById("loader");
 const popup = document.getElementById("successPopup");
 
-// ================================
+// ======================================
 // Profile Image Preview
-// ================================
+// ======================================
 
-profileImage.addEventListener("change", () => {
+profileImage.addEventListener("change", function () {
 
-    const file = profileImage.files[0];
+    const file = this.files[0];
 
     if (file) {
 
@@ -33,11 +37,11 @@ profileImage.addEventListener("change", () => {
 
 });
 
-// ================================
+// ======================================
 // Show / Hide Password
-// ================================
+// ======================================
 
-togglePassword.addEventListener("click", () => {
+togglePassword.addEventListener("click", function () {
 
     if (password.type === "password") {
 
@@ -46,9 +50,7 @@ togglePassword.addEventListener("click", () => {
         togglePassword.innerHTML =
             '<i class="fa-solid fa-eye-slash"></i>';
 
-    }
-
-    else {
+    } else {
 
         password.type = "password";
 
@@ -59,13 +61,13 @@ togglePassword.addEventListener("click", () => {
 
 });
 
-// ================================
+// ======================================
 // Password Strength
-// ================================
+// ======================================
 
-password.addEventListener("input", () => {
+password.addEventListener("input", function () {
 
-    const value = password.value;
+    let value = password.value;
 
     let strength = 0;
 
@@ -73,6 +75,9 @@ password.addEventListener("input", () => {
         strength++;
 
     if (/[A-Z]/.test(value))
+        strength++;
+
+    if (/[a-z]/.test(value))
         strength++;
 
     if (/[0-9]/.test(value))
@@ -85,30 +90,32 @@ password.addEventListener("input", () => {
 
         case 1:
 
-            strengthBar.style.width = "25%";
+            strengthBar.style.width = "20%";
             strengthBar.style.background = "#ff3b30";
-
             break;
 
         case 2:
 
-            strengthBar.style.width = "50%";
+            strengthBar.style.width = "40%";
             strengthBar.style.background = "#ff9500";
-
             break;
 
         case 3:
 
-            strengthBar.style.width = "75%";
+            strengthBar.style.width = "60%";
             strengthBar.style.background = "#ffd60a";
-
             break;
 
         case 4:
 
-            strengthBar.style.width = "100%";
-            strengthBar.style.background = "#34c759";
+            strengthBar.style.width = "80%";
+            strengthBar.style.background = "#30d158";
+            break;
 
+        case 5:
+
+            strengthBar.style.width = "100%";
+            strengthBar.style.background = "#00c853";
             break;
 
         default:
@@ -120,25 +127,25 @@ password.addEventListener("input", () => {
 
 });
 
-// ================================
+// ======================================
 // Username Validation
-// ================================
+// ======================================
 
-username.addEventListener("input", () => {
+const reservedNames = [
+
+    "admin",
+    "root",
+    "test",
+    "guest",
+    "user"
+
+];
+
+username.addEventListener("input", function () {
 
     const value = username.value.trim().toLowerCase();
 
-    const reserved = [
-
-        "admin",
-        "root",
-        "test",
-        "guest",
-        "user"
-
-    ];
-
-    if (value.length === 0) {
+    if (value === "") {
 
         userMessage.innerHTML = "";
 
@@ -151,35 +158,45 @@ username.addEventListener("input", () => {
         userMessage.style.color = "#ffd60a";
 
         userMessage.innerHTML =
-            "Username must be at least 4 characters.";
-
-        return;
+            "Username must contain at least 4 characters.";
 
     }
 
-    if (reserved.includes(value)) {
+    else if (reservedNames.includes(value)) {
 
-        userMessage.style.color = "#ff453a";
+        userMessage.style.color = "#ff3b30";
 
         userMessage.innerHTML =
             "Username is already taken.";
 
-        return;
+    }
+
+    else {
+
+        userMessage.style.color = "#30d158";
+
+        userMessage.innerHTML =
+            "✓ Username Available";
 
     }
 
-    userMessage.style.color = "#30d158";
+});
 
-    userMessage.innerHTML =
-        "✓ Username available.";
+// ======================================
+// Phone Validation
+// ======================================
+
+phone.addEventListener("input", function () {
+
+    this.value = this.value.replace(/[^0-9]/g, "");
 
 });
 
-// ================================
+// ======================================
 // Form Submit
-// ================================
+// ======================================
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
@@ -187,7 +204,7 @@ form.addEventListener("submit", (e) => {
 
     popup.style.display = "none";
 
-    setTimeout(() => {
+    setTimeout(function () {
 
         loader.style.display = "none";
 
@@ -209,7 +226,7 @@ form.addEventListener("submit", (e) => {
         togglePassword.innerHTML =
             '<i class="fa-solid fa-eye"></i>';
 
-        setTimeout(() => {
+        setTimeout(function () {
 
             popup.style.display = "none";
 
