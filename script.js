@@ -1,3 +1,7 @@
+// ================================
+// Get Elements
+// ================================
+
 const form = document.getElementById("registerForm");
 
 const password = document.getElementById("password");
@@ -13,9 +17,13 @@ const preview = document.getElementById("preview");
 const loader = document.getElementById("loader");
 const popup = document.getElementById("successPopup");
 
-profileImage.addEventListener("change", function () {
+// ================================
+// Profile Image Preview
+// ================================
 
-    const file = this.files[0];
+profileImage.addEventListener("change", () => {
+
+    const file = profileImage.files[0];
 
     if (file) {
 
@@ -25,13 +33,18 @@ profileImage.addEventListener("change", function () {
 
 });
 
-togglePassword.addEventListener("click", function () {
+// ================================
+// Show / Hide Password
+// ================================
+
+togglePassword.addEventListener("click", () => {
 
     if (password.type === "password") {
 
         password.type = "text";
 
-        this.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+        togglePassword.innerHTML =
+            '<i class="fa-solid fa-eye-slash"></i>';
 
     }
 
@@ -39,15 +52,20 @@ togglePassword.addEventListener("click", function () {
 
         password.type = "password";
 
-        this.innerHTML = '<i class="fa-solid fa-eye"></i>';
+        togglePassword.innerHTML =
+            '<i class="fa-solid fa-eye"></i>';
 
     }
 
 });
 
-password.addEventListener("keyup", function () {
+// ================================
+// Password Strength
+// ================================
 
-    let value = password.value;
+password.addEventListener("input", () => {
+
+    const value = password.value;
 
     let strength = 0;
 
@@ -102,54 +120,74 @@ password.addEventListener("keyup", function () {
 
 });
 
-username.addEventListener("keyup", function () {
+// ================================
+// Username Validation
+// ================================
 
-    let value = username.value.trim().toLowerCase();
+username.addEventListener("input", () => {
+
+    const value = username.value.trim().toLowerCase();
 
     const reserved = [
+
         "admin",
         "root",
         "test",
         "guest",
         "user"
+
     ];
 
     if (value.length === 0) {
 
         userMessage.innerHTML = "";
 
+        return;
+
     }
 
-    else if (value.length < 4) {
+    if (value.length < 4) {
 
         userMessage.style.color = "#ffd60a";
-        userMessage.innerHTML = "Username must be at least 4 characters.";
+
+        userMessage.innerHTML =
+            "Username must be at least 4 characters.";
+
+        return;
 
     }
 
-    else if (reserved.includes(value)) {
+    if (reserved.includes(value)) {
 
         userMessage.style.color = "#ff453a";
-        userMessage.innerHTML = "Username is already taken.";
+
+        userMessage.innerHTML =
+            "Username is already taken.";
+
+        return;
 
     }
 
-    else {
+    userMessage.style.color = "#30d158";
 
-        userMessage.style.color = "#30d158";
-        userMessage.innerHTML = "✓ Username available.";
-
-    }
+    userMessage.innerHTML =
+        "✓ Username available.";
 
 });
 
-form.addEventListener("submit", function (e) {
+// ================================
+// Form Submit
+// ================================
+
+form.addEventListener("submit", (e) => {
 
     e.preventDefault();
 
     loader.style.display = "block";
 
-    setTimeout(function () {
+    popup.style.display = "none";
+
+    setTimeout(() => {
 
         loader.style.display = "none";
 
@@ -157,13 +195,21 @@ form.addEventListener("submit", function (e) {
 
         form.reset();
 
-        preview.src = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
+        preview.src =
+            "https://cdn-icons-png.flaticon.com/512/847/847969.png";
 
         strengthBar.style.width = "0%";
 
+        strengthBar.style.background = "red";
+
         userMessage.innerHTML = "";
 
-        setTimeout(function () {
+        password.type = "password";
+
+        togglePassword.innerHTML =
+            '<i class="fa-solid fa-eye"></i>';
+
+        setTimeout(() => {
 
             popup.style.display = "none";
 
