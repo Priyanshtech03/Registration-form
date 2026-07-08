@@ -4,7 +4,6 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Professional Registration Form</title>
@@ -12,71 +11,79 @@
     <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
 <body>
 
+    <!-- Background Animation -->
     <div class="bg-animation">
-
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-
     </div>
 
+    <!-- Main Container -->
     <div class="container">
 
+        <!-- Logo -->
         <div class="logo">
             <i class="fa-solid fa-user"></i>
         </div>
 
         <h1>Create Account</h1>
 
-        <form id="registerForm">
+        <!-- Registration Form -->
+        <form id="registerForm" class="register-form">
 
+            <!-- Profile Upload -->
             <div class="profile-upload">
 
                 <label for="profileImage">
 
                     <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                    id="preview"
-                    alt="Profile">
+                        id="preview"
+                        alt="Profile">
 
                 </label>
 
                 <input
-                type="file"
-                id="profileImage"
-                accept="image/*">
+                    type="file"
+                    id="profileImage"
+                    accept="image/*"
+                    hidden>
 
             </div>
 
+            <!-- Full Name -->
             <div class="input-box">
 
                 <i class="fa-solid fa-user"></i>
 
                 <input
-                type="text"
-                id="fullname"
-                required>
+                    type="text"
+                    id="fullname"
+                    autocomplete="name"
+                    required>
 
                 <label>Full Name</label>
 
             </div>
 
+            <!-- Username -->
             <div class="input-box">
 
                 <i class="fa-solid fa-id-card"></i>
 
                 <input
-                type="text"
-                id="username"
-                required>
+                    type="text"
+                    id="username"
+                    autocomplete="username"
+                    required>
 
                 <label>Username</label>
 
@@ -84,148 +91,150 @@
 
             </div>
 
+            <!-- Email -->
             <div class="input-box">
 
                 <i class="fa-solid fa-envelope"></i>
 
                 <input
-                type="email"
-                id="email"
-                required>
+                    type="email"
+                    id="email"
+                    autocomplete="email"
+                    required>
 
                 <label>Email</label>
 
             </div>
 
+            <!-- Phone -->
             <div class="input-box">
 
                 <i class="fa-solid fa-phone"></i>
 
                 <input
-                type="tel"
-                id="phone"
-                maxlength="10"
-                pattern="[0-9]{10}"
-                required>
+                    type="tel"
+                    id="phone"
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                    autocomplete="tel"
+                    required>
 
                 <label>Phone Number</label>
 
             </div>
 
+            <!-- Course -->
             <div class="input-box">
 
-                <i class="fa-solid fa-earth-asia"></i>
+                <i class="fa-solid fa-graduation-cap"></i>
 
-                <select required>
+                <select id="course" required>
 
-                     <option value="">Select Course</option>
+                    <option value="">Select Course</option>
 
-        <option>BCA</option>
-        <option>BBA</option>
-        <option>B.Com</option>
-        <option>B.Sc</option>
-        <option>B.Tech</option>
-        <option>BA</option>
-        <option>B.Ed</option>
-        <option>B.Pharm</option>
-        <option>LLB</option>
-        <option>MBBS</option>
-        <option>BDS</option>
-        <option>Diploma</option>
-        <option>MCA</option>
-        <option>MBA</option>
-        <option>M.Com</option>
-        <option>M.Sc</option>
-        <option>M.Tech</option>
-        <option>Ph.D</option>
-        <option>Other</option>
+                    <option>BCA</option>
+                    <option>BBA</option>
+                    <option>B.Com</option>
+                    <option>B.Sc</option>
+                    <option>B.Tech</option>
+                    <option>BA</option>
+                    <option>B.Ed</option>
+                    <option>B.Pharm</option>
+                    <option>LLB</option>
+                    <option>MBBS</option>
+                    <option>BDS</option>
+                    <option>Diploma</option>
+                    <option>MCA</option>
+                    <option>MBA</option>
+                    <option>M.Com</option>
+                    <option>M.Sc</option>
+                    <option>M.Tech</option>
+                    <option>Ph.D</option>
+                    <option>Other</option>
 
                 </select>
 
             </div>
 
-            <div class="gender">
+            <!-- Gender -->
+            <div class="gender-group">
 
-                <label>
+                <span class="gender-title">Gender</span>
 
-                    <input
-                    type="radio"
-                    name="gender"
-                    value="Male"
-                    required>
+                <div class="gender">
 
-                    Male
+                    <label class="gender-option">
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Male"
+                            required>
+                        <span>Male</span>
+                    </label>
 
-                </label>
+                    <label class="gender-option">
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Female">
+                        <span>Female</span>
+                    </label>
 
-                <label>
+                    <label class="gender-option">
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Other">
+                        <span>Other</span>
+                    </label>
 
-                    <input
-                    type="radio"
-                    name="gender"
-                    value="Female">
-
-                    Female
-
-                </label>
-
-                <label>
-
-                    <input
-                    type="radio"
-                    name="gender"
-                    value="Other">
-
-                    Other
-
-                </label>
+                </div>
 
             </div>
 
+            <!-- Password -->
             <div class="input-box password-box">
 
                 <i class="fa-solid fa-lock"></i>
 
                 <input
-                type="password"
-                id="password"
-                minlength="8"
-                required>
+                    type="password"
+                    id="password"
+                    autocomplete="new-password"
+                    minlength="8"
+                    required>
 
                 <label>Password</label>
 
                 <span id="togglePassword">
-
                     <i class="fa-solid fa-eye"></i>
-
                 </span>
 
             </div>
 
+            <!-- Password Strength -->
             <div class="strength">
-
                 <div id="strengthBar"></div>
-
             </div>
 
+            <!-- Terms -->
             <div class="terms">
 
                 <input
-                type="checkbox"
-                id="terms"
-                required>
+                    type="checkbox"
+                    id="terms"
+                    required>
 
                 <label for="terms">
-
                     I agree to the Terms & Conditions
-
                 </label>
 
             </div>
 
+            <!-- Button -->
             <button
-            type="submit"
-            id="registerBtn">
+                type="submit"
+                id="registerBtn">
 
                 Register
 
@@ -233,9 +242,10 @@
 
         </form>
 
+        <!-- Loader -->
         <div
-        class="loader"
-        id="loader">
+            class="loader"
+            id="loader">
 
             <div class="spinner"></div>
 
@@ -243,9 +253,10 @@
 
         </div>
 
+        <!-- Success Popup -->
         <div
-        class="success-popup"
-        id="successPopup">
+            class="success-popup"
+            id="successPopup">
 
             <i class="fa-solid fa-circle-check"></i>
 
@@ -255,6 +266,7 @@
 
         </div>
 
+        <!-- Footer -->
         <div class="footer">
 
             Already have an account?
