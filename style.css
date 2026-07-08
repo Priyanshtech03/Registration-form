@@ -13,7 +13,8 @@ body{
     background:linear-gradient(-45deg,#6a11cb,#2575fc,#00c6ff,#6a11cb);
     background-size:400% 400%;
     animation:gradientBG 12s ease infinite;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
     position:relative;
     padding:20px;
 }
@@ -115,7 +116,8 @@ body{
 }
 
 .container{
-    width:430px;
+    width:100%;
+    max-width:430px;
     padding:35px;
     border-radius:20px;
     background:rgba(255,255,255,.15);
@@ -281,7 +283,6 @@ h1{
     background:red;
     transition:.4s;
 }
-
 #userMessage{
     display:block;
     margin-top:-12px;
@@ -289,26 +290,50 @@ h1{
     color:#fff;
     font-size:13px;
 }
+
+/* ==========================
+   Gender Section
+========================== */
+
+.gender-group{
+    margin:20px 0;
+}
+
+.gender-title{
+    display:block;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
 .gender{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:20px 0;
-    color:#fff;
+    gap:10px;
+    flex-wrap:nowrap;
 }
 
-.gender label{
+.gender-option{
     display:flex;
     align-items:center;
     gap:6px;
+    color:#fff;
     cursor:pointer;
     font-size:15px;
+    white-space:nowrap;
 }
 
-.gender input{
+.gender-option input{
     accent-color:#00c6ff;
     cursor:pointer;
+    transform:scale(1.05);
 }
+
+/* ==========================
+   Terms
+========================== */
 
 .terms{
     display:flex;
@@ -326,6 +351,10 @@ h1{
     cursor:pointer;
 }
 
+/* ==========================
+   Register Button
+========================== */
+
 button{
     width:100%;
     padding:14px;
@@ -335,6 +364,7 @@ button{
     color:#fff;
     font-size:18px;
     font-weight:bold;
+    letter-spacing:.5px;
     cursor:pointer;
     transition:.35s ease;
     box-shadow:0 5px 15px rgba(0,131,176,.3);
@@ -344,13 +374,18 @@ button:hover{
     background:linear-gradient(135deg,#00c6ff,#0072ff);
     transform:translateY(-2px);
     box-shadow:
-        0 0 8px rgba(0,198,255,.45),
-        0 0 18px rgba(0,114,255,.25);
+        0 0 10px rgba(0,198,255,.6),
+        0 0 20px rgba(0,114,255,.4),
+        0 0 35px rgba(0,198,255,.2);
 }
 
 button:active{
     transform:scale(.98);
 }
+
+/* ==========================
+   Loader
+========================== */
 
 .loader{
     display:none;
@@ -376,6 +411,10 @@ button:active{
     }
 }
 
+/* ==========================
+   Success Popup
+========================== */
+
 .success-popup{
     display:none;
     position:fixed;
@@ -383,6 +422,7 @@ button:active{
     left:50%;
     transform:translate(-50%,-50%);
     width:330px;
+    max-width:90%;
     padding:30px;
     background:#fff;
     border-radius:20px;
@@ -422,6 +462,10 @@ button:active{
 
 }
 
+/* ==========================
+   Footer
+========================== */
+
 .footer{
     margin-top:25px;
     text-align:center;
@@ -441,6 +485,10 @@ button:active{
     text-decoration:underline;
 }
 
+/* ==========================
+   Smooth Effects
+========================== */
+
 button,
 input,
 select{
@@ -452,16 +500,22 @@ select:focus{
     transform:scale(1.02);
 }
 
+/* ==========================
+   Responsive - Tablet
+========================== */
+
 @media(max-width:768px){
 
     body{
         padding:15px;
+        align-items:flex-start;
     }
 
     .container{
         width:100%;
         max-width:420px;
         padding:25px;
+        margin:20px auto;
     }
 
     .logo{
@@ -480,9 +534,13 @@ select:focus{
     }
 
     .gender{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:12px;
+        justify-content:space-between;
+        flex-wrap:nowrap;
+        gap:8px;
+    }
+
+    .gender-option{
+        font-size:14px;
     }
 
     button{
@@ -492,44 +550,224 @@ select:focus{
     .success-popup{
         width:90%;
     }
-
 }
+/* ==========================
+   Mobile Responsive (480px)
+========================== */
 
-@media(max-width:480px){
+@media (max-width:480px){
+
+    body{
+        padding:10px;
+        align-items:flex-start;
+    }
 
     .container{
-        padding:20px;
+        width:100%;
+        max-width:100%;
+        padding:18px;
+        margin:15px auto;
         border-radius:15px;
     }
 
     h1{
-        font-size:24px;
+        font-size:22px;
+        margin-bottom:20px;
     }
 
     .logo{
-        width:65px;
-        height:65px;
-        font-size:28px;
+        width:60px;
+        height:60px;
+        font-size:26px;
+        margin-bottom:15px;
+    }
+
+    .profile-upload{
+        margin-bottom:18px;
     }
 
     .profile-upload img{
-        width:75px;
-        height:75px;
+        width:70px;
+        height:70px;
+    }
+
+    .input-box{
+        margin-bottom:18px;
     }
 
     .input-box input,
     .input-box select{
-        height:46px;
+        height:44px;
         font-size:14px;
+        padding:0 42px;
+    }
+
+    .input-box i{
+        left:13px;
+        font-size:15px;
+    }
+
+    .input-box label{
+        left:42px;
+        font-size:14px;
+    }
+
+    .input-box input:focus~label,
+    .input-box input:valid~label{
+        left:36px;
+        font-size:11px;
+    }
+
+    /* Keep gender in one line */
+
+    .gender-group{
+        margin:18px 0;
+    }
+
+    .gender-title{
+        margin-bottom:10px;
+        font-size:14px;
+    }
+
+    .gender{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        flex-wrap:nowrap;
+        gap:4px;
+    }
+
+    .gender-option{
+        font-size:12px;
+        gap:3px;
+    }
+
+    .gender-option input{
+        transform:scale(.9);
+    }
+
+    .strength{
+        margin-bottom:18px;
+    }
+
+    .terms{
+        font-size:13px;
+        gap:8px;
+    }
+
+    .terms input{
+        margin-top:3px;
     }
 
     button{
-        padding:13px;
-        font-size:16px;
+        padding:12px;
+        font-size:15px;
+        border-radius:10px;
     }
 
     .footer{
+        margin-top:20px;
+        font-size:13px;
+    }
+
+    .success-popup{
+        width:92%;
+        padding:25px 18px;
+    }
+
+    .success-popup i{
+        font-size:55px;
+    }
+
+    .success-popup h2{
+        font-size:22px;
+    }
+
+    .success-popup p{
         font-size:14px;
     }
 
+}
+
+/* ==========================
+   Small Phones (360px)
+========================== */
+
+@media (max-width:360px){
+
+    .container{
+        padding:15px;
+    }
+
+    h1{
+        font-size:20px;
+    }
+
+    .logo{
+        width:55px;
+        height:55px;
+        font-size:24px;
+    }
+
+    .profile-upload img{
+        width:65px;
+        height:65px;
+    }
+
+    .input-box input,
+    .input-box select{
+        height:42px;
+        font-size:13px;
+    }
+
+    .gender{
+        gap:2px;
+    }
+
+    .gender-option{
+        font-size:11px;
+    }
+
+    button{
+        font-size:14px;
+        padding:11px;
+    }
+
+    .footer{
+        font-size:12px;
+    }
+
+}
+
+/* ==========================
+   Large Desktop
+========================== */
+
+@media (min-width:1200px){
+
+    .container{
+        max-width:460px;
+    }
+
+}
+
+/* ==========================
+   Custom Scrollbar
+========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:rgba(255,255,255,.08);
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00c6ff;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#0072ff;
 }
