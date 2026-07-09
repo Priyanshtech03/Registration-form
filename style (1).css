@@ -1,0 +1,927 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    transition:
+        background .3s ease,
+        color .3s ease,
+        border .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        -45deg,
+        #6a11cb,
+        #2575fc,
+        #00c6ff,
+        #6a11cb
+    );
+
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding: 20px;
+
+    position: relative;
+}
+
+
+@keyframes gradientBG {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+.bg-animation {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bg-animation span {
+
+    position: absolute;
+    display: block;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.15);
+
+    backdrop-filter: blur(8px);
+
+    animation: bubble linear infinite;
+
+}
+
+.bg-animation span:nth-child(1) {
+
+    width: 90px;
+    height: 90px;
+
+    left: 8%;
+
+    animation-duration: 16s;
+
+}
+
+.bg-animation span:nth-child(2) {
+
+    width: 140px;
+    height: 140px;
+
+    left: 28%;
+
+    animation-duration: 22s;
+    animation-delay: 2s;
+
+}
+
+.bg-animation span:nth-child(3) {
+
+    width: 70px;
+    height: 70px;
+
+    left: 48%;
+
+    animation-duration: 15s;
+    animation-delay: 4s;
+
+}
+
+.bg-animation span:nth-child(4) {
+
+    width: 120px;
+    height: 120px;
+
+    left: 68%;
+
+    animation-duration: 24s;
+
+}
+
+.bg-animation span:nth-child(5) {
+
+    width: 100px;
+    height: 100px;
+
+    left: 88%;
+
+    animation-duration: 18s;
+    animation-delay: 3s;
+
+}
+
+.bg-animation span:nth-child(6) {
+
+    width: 60px;
+    height: 60px;
+
+    left: 55%;
+
+    animation-duration: 13s;
+    animation-delay: 6s;
+
+}
+
+@keyframes bubble {
+
+    0% {
+
+        transform:
+            translateY(110vh)
+            scale(0);
+
+        opacity: 0;
+
+    }
+
+    20% {
+        opacity: .5;
+    }
+
+    50% {
+        opacity: .8;
+    }
+
+    100% {
+
+        transform:
+            translateY(-120vh)
+            scale(1.4)
+            rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+.container {
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background: rgba(255,255,255,.15);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.25);
+
+}
+
+.container:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 30px 50px rgba(0,0,0,.35),
+        0 0 25px rgba(0,198,255,.25);
+
+}
+
+
+.logo {
+
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(255,255,255,.20);
+
+    color: #fff;
+
+    font-size: 36px;
+
+}
+
+.logo:hover {
+
+    transform:
+        rotate(10deg)
+        scale(1.1);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.5);
+
+}
+
+
+
+h1 {
+
+    text-align: center;
+
+    color: #fff;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,.6),
+        0 0 18px rgba(0,198,255,.45);
+
+}
+
+
+
+.profile-upload {
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+
+.profile-upload img {
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 3px solid rgba(255,255,255,.4);
+
+    cursor: pointer;
+
+}
+
+.profile-upload img:hover {
+
+    transform: scale(1.08);
+
+    border-color: #00e5ff;
+
+    box-shadow:
+        0 0 18px rgba(0,229,255,.6);
+
+}
+
+
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
+.input-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    font-size: 17px;
+    transition: .35s ease;
+}
+
+
+
+.input-box input,
+.input-box select {
+
+    width: 100%;
+    height: 52px;
+
+    padding: 0 45px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,.30);
+
+    background: rgba(255,255,255,.15);
+
+    color: #ffffff;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: all .35s ease;
+
+}
+
+
+.input-box option {
+    color: #000;
+}
+
+
+
+.input-box input:focus,
+.input-box select:focus {
+
+    border: 1px solid #00e5ff;
+
+    background: rgba(255,255,255,.22);
+
+    box-shadow:
+        0 0 10px rgba(0,229,255,.5),
+        0 0 20px rgba(0,229,255,.25);
+
+    transform: scale(1.02);
+
+}
+
+
+
+.input-box input:focus + i,
+.input-box select:focus + i {
+
+    color: #00e5ff;
+
+    transform:
+        translateY(-50%)
+        scale(1.15);
+
+}
+
+.input-box label {
+
+    position: absolute;
+
+    left: 45px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #eeeeee;
+
+    font-size: 15px;
+
+    pointer-events: none;
+
+    transition: .35s ease;
+
+}
+
+/* Label Animation */
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+
+    top: -10px;
+
+    left: 40px;
+
+    font-size: 12px;
+
+    padding: 3px 10px;
+
+    border-radius: 20px;
+
+    background: #2575fc;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 12px rgba(37,117,252,.5);
+
+}
+
+/* ==========================================
+   Password Box
+========================================== */
+
+.password-box {
+    position: relative;
+}
+
+/* Show / Hide Password */
+
+#togglePassword {
+
+    position: absolute;
+
+    right: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+}
+
+#togglePassword:hover {
+
+    color: #00e5ff;
+
+}
+
+/* ==========================================
+   Password Strength Bar
+========================================== */
+
+.strength {
+
+    height: 8px;
+
+    background: rgba(255,255,255,.20);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin: -8px 0 18px;
+
+}
+
+#strengthBar {
+
+    width: 0;
+
+    height: 100%;
+
+    background: red;
+
+    transition: width .35s ease;
+
+}
+
+/* ==========================================
+   User Message
+========================================== */
+
+#userMessage {
+
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    margin-top: 6px;
+
+}
+
+/* ==========================================
+   Placeholder
+========================================== */
+
+::placeholder {
+
+    color: rgba(255,255,255,.70);
+
+}
+/* ==========================================
+   Gender Section
+========================================== */
+
+.gender-group {
+    margin: 20px 0;
+}
+
+.gender-title {
+    display: block;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.gender {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.gender-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.gender-option input {
+    accent-color: #00c6ff;
+    cursor: pointer;
+}
+
+.gender-option:hover {
+    color: #00e5ff;
+}
+
+/* ==========================================
+   Submit Button
+========================================== */
+
+button {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+
+    color: #fff;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all .35s ease;
+}
+
+button:hover {
+
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    box-shadow:
+        0 0 10px #00c6ff,
+        0 0 25px rgba(0, 198, 255, .8),
+        0 0 40px rgba(0, 198, 255, .5);
+
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+/* ==========================================
+   Loader
+========================================== */
+
+.loader {
+    display: none;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.spinner {
+    width: 45px;
+    height: 45px;
+
+    margin: 0 auto 15px;
+
+    border: 5px solid rgba(255, 255, 255, .3);
+    border-top-color: #fff;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+/* ==========================================
+   Success Popup
+========================================== */
+
+.success-popup {
+
+    display: none;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(330px, 90%);
+
+    padding: 25px;
+
+    background: #fff;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
+
+}
+
+.success-popup i {
+
+    font-size: 60px;
+
+    color: #00c853;
+
+    margin-bottom: 10px;
+
+}
+
+.success-popup h2 {
+
+    color: #333;
+
+    margin-bottom: 10px;
+
+}
+
+.success-popup p {
+
+    color: #555;
+
+    line-height: 1.5;
+
+}
+
+/* ==========================================
+   Footer
+========================================== */
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #fff;
+
+    font-size: 14px;
+
+}
+
+.footer a {
+
+    color: #00e5ff;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: .3s;
+
+}
+
+.footer a:hover {
+
+    color: #fff;
+
+    text-shadow: 0 0 10px #00e5ff;
+
+}
+/* ==========================================
+   Responsive Design
+========================================== */
+
+@media (max-width: 768px) {
+
+    body {
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 24px;
+        max-width: 95%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
+    }
+
+    .profile-upload img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .input-box input,
+    .input-box select {
+        height: 48px;
+        font-size: 15px;
+    }
+
+    button {
+        font-size: 17px;
+    }
+
+}
+
+/* ==========================================
+   Mobile Devices
+========================================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .logo {
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .profile-upload img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .input-box {
+        margin-bottom: 18px;
+    }
+
+    .input-box input,
+    .input-box select {
+        height: 45px;
+        font-size: 14px;
+        padding: 0 42px;
+    }
+
+    .input-box i {
+        left: 13px;
+        font-size: 15px;
+    }
+
+    .input-box label {
+        left: 42px;
+        font-size: 13px;
+    }
+
+    .gender {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .gender-option {
+        font-size: 13px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .success-popup {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .success-popup h2 {
+        font-size: 22px;
+    }
+
+    .success-popup p {
+        font-size: 14px;
+    }
+
+    .footer {
+        font-size: 13px;
+    }
+
+}
+
+/* ==========================================
+   Small Mobile Devices
+========================================== */
+
+@media (max-width: 320px) {
+
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .logo {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+
+    .profile-upload img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .input-box input,
+    .input-box select {
+        height: 42px;
+        font-size: 13px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+
+}
+
+/* ==========================================
+   Selection Color
+========================================== */
+
+::selection {
+
+    background: #00c6ff;
+    color: #ffffff;
+
+}
+
+/* ==========================================
+   Scrollbar
+========================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.15);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00c6ff;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0072ff;
+}
+
+/* ==========================================
+   End of CSS
+========================================== */
